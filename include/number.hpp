@@ -28,10 +28,12 @@ class Number {
 
                 case 'x':
                     return 'x';
-
-                default:
-                    return 'd';
             }
+
+            if (value[0] == '0')
+                return 'o';
+
+            return 'd';
         }
 };
 
