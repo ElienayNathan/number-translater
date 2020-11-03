@@ -7,10 +7,14 @@ using namespace std;
 
 class Number {
     public:
-        void get_value (data) {
+        void set_value (string data) {
             value = data;
             type = check_type();
             cout << endl << "O numero " << value << " tem o tipo primitivo " << type;
+        }
+
+        string get_value () {
+            return value;
         }
 
     private:

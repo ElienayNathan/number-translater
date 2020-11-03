@@ -6,9 +6,11 @@ using namespace std;
 
 int main () {
     Number number;
+    string user_number;
 
-    cout << "Escreva um número: ";
-    cin >> number.get_value();
+    cout << "Escreva um numero: ";
+    cin >> user_number;
+    number.set_value(user_number);
 
     system("pause > nul");
     
