@@ -6,6 +6,9 @@ Um projeto C++ para traduzir números para outros tipos primitivos. O Number Tra
 - Octais (base 8)
 - Hexadecimais (base 16)
 
+!(Foto do programa atualmente)[github/program-pic.png]
+*04/11/2020*
+
 ## Compilando o programa :gear:
 
 O arquivo (*make.bat*)[make.bat] serve para rodar o programa. Para usa-lo, basta somente abrir um terminal na raiz do projeto, e digitar ```make <parametro>```.
