@@ -1,7 +1,9 @@
 #ifndef TRANSLATE_HPP_INCLUDED
 #define TRANSLATE_HPP_INCLUDED
 
+#include "manipulation.hpp"
 #include <string>
+#include <math.h>
 
 using namespace std;
 
@@ -16,7 +18,20 @@ class Binary {
         }
 
         string decimal (string value) {
-            return "?";
+            int dec_number = 0;
+
+            value = remove_id(value, 2);
+            value = reverse(value);
+
+            for (int bit_pos = 0; bit_pos < value.length(); bit_pos++) {
+                if (value[bit_pos] == '1')
+                    dec_number += pow(2, bit_pos);
+            }
+
+            dec_number -= 1;
+            value = to_string(dec_number);
+
+            return value;
         }
 
         string hex (string value) {

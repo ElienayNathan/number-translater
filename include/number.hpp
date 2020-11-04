@@ -2,7 +2,6 @@
 #define NUMBER_HPP_INCLUDED
 
 #include "translate.hpp"
-
 #include <string>
 
 using namespace std;
