@@ -6,7 +6,7 @@ Um projeto C++ para traduzir números para outros tipos primitivos. O Number Tra
 - Octais (base 8)
 - Hexadecimais (base 16)
 
-!(Foto do programa atualmente)[github/program-pic.png]
+![Foto do programa atualmente](github/program-pic.png)
 *04/11/2020*
 
 ## Compilando o programa :gear:
