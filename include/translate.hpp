@@ -18,18 +18,19 @@ class Binary {
         }
 
         string decimal (string value) {
-            int dec_number = 0;
+            int dec_number = 0; // Número decimal
 
-            value = remove_id(value, 2);
-            value = reverse(value);
+            value = remove_id(value, 2); // Removendo o '0b'
+            value = reverse(value); // Invertendo o número
 
+            // Transformando em decimal
             for (int bit_pos = 0; bit_pos < value.length(); bit_pos++) {
                 if (value[bit_pos] == '1')
                     dec_number += pow(2, bit_pos);
             }
 
             dec_number -= 1;
-            value = to_string(dec_number);
+            value = to_string(dec_number); // Transformando em String
 
             return value;
         }
