@@ -29,7 +29,6 @@ class Binary {
                     dec_number += pow(2, bit_pos);
             }
 
-            dec_number -= 1;
             value = to_string(dec_number); // Transformando em String
 
             return value;
