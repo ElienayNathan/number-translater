@@ -26,7 +26,7 @@ string turn_bin (string value) {
 
 string turn_octal (string value) {
     int n = stoi(value);
-    n = (n / 7) * 10 + n % 7;
+    n = (n / 8) * 10 + n % 8;
 
     return '0' + to_string(n);
 }
