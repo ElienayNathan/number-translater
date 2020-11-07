@@ -2,10 +2,37 @@
 #define TRANSLATE_HPP_INCLUDED
 
 #include "manipulation.hpp"
+#include <iostream>
 #include <string>
 #include <math.h>
 
 using namespace std;
+
+string turn_octal (string value) {
+    int n = stoi(value);
+    n = (n / 7) * 10 + n % 7;
+
+    return '0' + to_string(n);
+}
+
+string turn_hex (string value) {
+    char list[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    string hex_value;
+    int n = stoi(value);
+
+    while (n != 0) {
+        int temp = 0;
+
+        temp = n % 16;
+        hex_value += list[temp];
+
+        n = n / 16;
+        temp = 0;
+	}
+
+    hex_value = reverse(hex_value);
+    return "0x" + hex_value;
+}
 
 class Binary {
     public:
@@ -14,7 +41,9 @@ class Binary {
         }
 
         string octal (string value) {
-            return "?";
+            value = decimal(value);
+            
+            return turn_octal(value);
         }
 
         string decimal (string value) {
@@ -35,7 +64,9 @@ class Binary {
         }
 
         string hex (string value) {
-            return "?";
+            value = decimal(value);
+
+            return turn_hex(value);
         }
 };
 
@@ -65,7 +96,7 @@ class Decimal {
         }
 
         string octal (string value) {
-            return "?";
+            return turn_octal(value);
         }
 
         string decimal (string value) {
