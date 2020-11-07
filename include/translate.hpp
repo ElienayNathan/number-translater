@@ -138,19 +138,55 @@ class Decimal {
 class Hex {
     public:
         string binary (string value) {
-            return "?";
+            value = decimal(value);
+
+            return turn_bin(value);
         }
 
         string octal (string value) {
-            return "?";
+            value = decimal(value);
+
+            return turn_octal(value);
         }
 
         string decimal (string value) {
-            return "?";
+            int dec_number = 0; // Número decimal
+
+            value = remove_id(value, 2); // Removendo o '0'
+            value = reverse(value); // Invertendo o número
+
+            // Transformando em decimal
+            for (int hex_pos = 0; hex_pos < value.length(); hex_pos++)
+                dec_number += (hex_to_dec(value[hex_pos])) * pow(16, hex_pos);
+
+            value = to_string(dec_number); // Transformando em String
+
+            return value;
         }
 
         string hex (string value) {
             return value;
+        }
+
+    private:
+        // Convertendo um caractere hexadecimal para um número decimal
+        int hex_to_dec (char hex) {
+            switch(hex) {
+                case 'A':
+                    return 10;
+                case 'B':
+                    return 11;
+                case 'C':
+                    return 12;
+                case 'D':
+                    return 13;
+                case 'E':
+                    return 14;
+                case 'F':
+                    return 15;
+            }
+
+            return hex - '0';
         }
 };
 
