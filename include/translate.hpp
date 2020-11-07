@@ -8,6 +8,22 @@
 
 using namespace std;
 
+string turn_bin (string value) {
+    int n = stoi(value);
+    string bin_value;
+
+    while (n != 0) {
+        int bit = n % 2;
+        bin_value += to_string(bit);
+
+        n = n / 2;
+        bit = 0;
+    }
+
+    bin_value = reverse(bin_value);
+    return "0b" + bin_value;
+}
+
 string turn_octal (string value) {
     int n = stoi(value);
     n = (n / 7) * 10 + n % 7;
@@ -21,9 +37,7 @@ string turn_hex (string value) {
     int n = stoi(value);
 
     while (n != 0) {
-        int temp = 0;
-
-        temp = n % 16;
+        int temp = n % 16;
         hex_value += list[temp];
 
         n = n / 16;
@@ -53,10 +67,8 @@ class Binary {
             value = reverse(value); // Invertendo o número
 
             // Transformando em decimal
-            for (int bit_pos = 0; bit_pos < value.length(); bit_pos++) {
-                if (value[bit_pos] == '1')
-                    dec_number += pow(2, bit_pos);
-            }
+            for (int bit_pos = 0; bit_pos < value.length(); bit_pos++)
+                dec_number += (value[bit_pos] - '0') * pow(2, bit_pos);
 
             value = to_string(dec_number); // Transformando em String
 
@@ -73,7 +85,9 @@ class Binary {
 class Octal {
     public:
         string binary (string value) {
-            return "?";
+            value = decimal(value);
+
+            return turn_bin(value);
         }
 
         string octal (string value) {
@@ -81,18 +95,31 @@ class Octal {
         }
 
         string decimal (string value) {
-            return "?";
+            int dec_number = 0; // Número decimal
+
+            value = remove_id(value, 1); // Removendo o '0'
+            value = reverse(value); // Invertendo o número
+
+            // Transformando em decimal
+            for (int oc_pos = 0; oc_pos < value.length(); oc_pos++)
+                dec_number += (value[oc_pos] - '0') * pow(8, oc_pos);
+
+            value = to_string(dec_number); // Transformando em String
+
+            return value;
         }
 
         string hex (string value) {
-            return "?";
+            value = decimal(value);
+
+            return turn_hex(value);
         }
 };
 
 class Decimal {
     public:
         string binary (string value) {
-            return "?";
+            return turn_bin(value);
         }
 
         string octal (string value) {
@@ -104,7 +131,7 @@ class Decimal {
         }
 
         string hex (string value) {
-            return "?";
+            return turn_hex(value);
         }
 };
 
